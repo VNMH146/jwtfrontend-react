@@ -1,4 +1,3 @@
-import Nav from './components/Navigation/Nav';
 import './App.scss';
 import {
   BrowserRouter as Router,
@@ -6,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 
 function App() {
@@ -25,6 +25,9 @@ function App() {
           </Route>
           <Route path="/" exact>
             home
+          </Route>
+          <Route path="/register">
+            <Register></Register>
           </Route>
           <Route path="/login">
             <Login></Login>

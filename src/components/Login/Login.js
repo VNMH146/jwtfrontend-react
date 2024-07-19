@@ -1,6 +1,11 @@
 import React from "react"
 import './Login.scss'
+import { useHistory } from 'react-router-dom';
 const Login = (props) => {
+  let history = useHistory();
+  const handleCreateNewAccount = () => {
+    history.push("/register");
+  }
   return (
     <div className="login-container">
       <div className="container">
@@ -17,7 +22,7 @@ const Login = (props) => {
             <span className="text-center"><a href="#" className="forgot-password">Forgot your password ?</a></span>
             <hr></hr>
             <div className="text-center">
-              <button className="btn btn-success">Create New Account</button>
+              <button className="btn btn-success" onClick={() => handleCreateNewAccount()}>Create New Account</button>
             </div>
 
           </div>
