@@ -7,13 +7,25 @@ import {
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import { ToastContainer } from 'react-toastify';
-
-
+import Users from './components/ManageUsers/Users';
+import { useEffect, useState } from 'react';
+import _ from 'lodash';
+import Nav from './components/Navigation/Nav';
 function App() {
+  const [account, setAccount] = useState({});
+
+  useEffect(() => {
+    let session = sessionStorage.getItem('account');
+    if (session) {
+      setAccount(JSON.parse(session));
+    }
+  }, []);
+
+
   return (
     <Router>
       <div className='app-container'>
-        {/* <Nav /> */}
+        {account && !_.isEmpty(account) && account.isAuthenticated && <Nav />}
         <Switch>
           <Route path="/about">
             about
@@ -33,8 +45,8 @@ function App() {
           <Route path="/login">
             <Login></Login>
           </Route>
-          <Route path="*">
-            404 not found
+          <Route path="/users">
+            <Users></Users>
           </Route>
         </Switch>
       </div>
